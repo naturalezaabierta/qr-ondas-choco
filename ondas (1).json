@@ -1,0 +1,18 @@
+[
+  {
+    "titulo": "Calma profunda",
+    "momento": "Durante el día",
+    "duracion": "10 min",
+    "icono": "🍃",
+    "descripcion": "Para apartarte un momento del ruido y soltar la tensión mientras disfrutas tu chocolate.",
+    "archivo": "audio/ondas/onda-1.mp3"
+  },
+  {
+    "titulo": "Descanso y sueño",
+    "momento": "Por la noche",
+    "duracion": "10 min",
+    "icono": "🌙",
+    "descripcion": "Un ambiente sonoro suave para escuchar mientras te acomodas antes de dormir.",
+    "archivo": "audio/ondas/onda-2.mp3"
+  }
+]

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChocoCalma · Tu momento de calma</title>
+<meta name="description" content="Una pausa para respirar, disfrutar tu chocolate y reconectar contigo, con ondas binaurales para acompañarte.">
+<meta name="theme-color" content="#2b1a14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#2b1a14; --bg2:#3a2419; --card:#4a2e21;
+    --line:rgba(224,181,116,.22);
+    --gold:#e0b574; --gold-soft:#f1d9ae; --cream:#fbf3e4; --muted:#d4bfa6;
+    --radius:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;color:var(--cream);line-height:1.6;font-size:17px;
+    background:radial-gradient(1200px 600px at 50% -10%,#5a3626 0%,var(--bg) 55%) fixed,var(--bg);
+    min-height:100vh;
+  }
+  .wrap{max-width:600px;margin:0 auto;padding:18px 18px 60px}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--gold-soft);outline-offset:3px}
+
+  /* Barra superior con logo */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 2px 18px;min-height:64px}
+  .logo-box{display:flex;align-items:center;min-height:44px}
+  .logo-box img{max-height:48px;max-width:150px;object-fit:contain}
+  .logo-fallback{font-family:'Cormorant Garamond',serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-size:.95rem;font-weight:700}
+  .tiny{color:var(--muted);font-size:.82rem;text-align:right}
+
+  /* Portada */
+  .hero{
+    position:relative;overflow:hidden;border-radius:30px;padding:34px 24px 30px;
+    background:radial-gradient(circle at 92% 0%,rgba(224,181,116,.28) 0,transparent 38%),linear-gradient(150deg,#4a2e21,#2f1c14 70%);
+    border:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.3);
+  }
+  .hero::after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-70px;bottom:-90px;
+    border:1px solid rgba(224,181,116,.25);box-shadow:0 0 0 20px rgba(224,181,116,.06),0 0 0 44px rgba(224,181,116,.04)}
+  .eyebrow{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(2.3rem,10vw,3.4rem);line-height:1.05;color:var(--gold-soft);margin:12px 0 12px}
+  .hero p{color:var(--cream);max-width:430px;margin-bottom:22px}
+  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.84rem;color:var(--gold-soft);margin-bottom:22px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;text-decoration:none;
+    border-radius:999px;padding:14px 22px;font:inherit;font-weight:800;transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-gold{background:linear-gradient(145deg,#f1d9ae,#d49f55);color:var(--bg);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+  .btn-outline{border:1px solid var(--line);background:transparent;color:var(--gold-soft)}
+  .btn-outline:hover{background:rgba(224,181,116,.1)}
+
+  /* Aviso */
+  .notice{display:flex;gap:12px;align-items:flex-start;background:rgba(224,181,116,.12);border:1px solid var(--line);
+    border-radius:16px;padding:14px 16px;margin:18px 0 0;font-size:.98rem;color:var(--gold-soft)}
+  .notice svg{flex:0 0 26px;margin-top:2px}
+
+  /* Secciones */
+  section.block{padding-top:34px}
+  .head{margin-bottom:16px}
+  h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.9rem;line-height:1.15;color:var(--gold-soft)}
+  .head p{color:var(--muted);font-size:.98rem;margin-top:4px}
+  .card{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;margin-bottom:16px;box-shadow:0 14px 34px rgba(0,0,0,.26)}
+  .card p+p{margin-top:12px}
+  .card strong{color:var(--gold-soft)}
+  .soft{border-left:3px solid var(--gold);padding:4px 0 4px 14px;margin-top:16px;color:var(--muted);font-size:.93rem}
+
+  /* Ritual */
+  .ritual{display:grid;gap:12px}
+  .ritual article{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:16px 18px}
+  .ritual .when{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:800}
+  .ritual h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;margin:4px 0 2px;color:var(--cream)}
+  .ritual p{color:var(--muted);font-size:.94rem}
+  .small{font-size:.8rem;color:var(--muted);margin:12px 2px 0}
+
+  /* Ondas */
+  .onda-head{display:flex;gap:14px;align-items:flex-start}
+  .icon{flex:0 0 48px;width:48px;height:48px;border-radius:16px;background:rgba(224,181,116,.14);display:grid;place-items:center;font-size:1.4rem}
+  .onda-head .meta{min-width:0}
+  .moment{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:800}
+  .card h3{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.55rem;line-height:1.15;color:var(--cream);margin-top:2px}
+  .desc{color:var(--muted);font-size:.97rem;margin-top:4px}
+  .card.playing{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 14px 34px rgba(0,0,0,.3)}
+
+  .player{margin-top:16px}
+  .controls{display:flex;align-items:center;gap:14px}
+  .play{flex:0 0 auto;width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(145deg,#f1d9ae,#d49f55);color:var(--bg);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);transition:transform .15s ease}
+  .play:active{transform:scale(.94)}
+  .play svg{width:26px;height:26px}
+  .play .i-pause{display:none}
+  .player.playing .i-play{display:none}
+  .player.playing .i-pause{display:block}
+  .track{flex:1;min-width:0}
+  .seek{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;outline:none;cursor:pointer;
+    background:linear-gradient(90deg,var(--gold) var(--p,0%),rgba(255,255,255,.14) var(--p,0%))}
+  .seek::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--gold-soft);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--gold)}
+  .seek::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold-soft);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--gold)}
+  .times{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-top:8px}
+  .extras{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center}
+  .chip{border:1px solid var(--line);background:transparent;color:var(--gold-soft);border-radius:99px;padding:8px 16px;
+    font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s ease}
+  .chip:hover{background:rgba(224,181,116,.12)}
+  .chip[aria-pressed="true"]{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+  .badge{font-size:.82rem;color:var(--muted)}
+  .unavailable{margin-top:14px;font-size:.92rem;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:12px 14px}
+  .empty{text-align:center;color:var(--muted);padding:18px}
+
+  /* Temporizador */
+  .sleep{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px;padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+  .sleep .label{font-size:.9rem;color:var(--gold-soft);font-weight:700;margin-right:4px}
+  .sleep .chip{padding:7px 13px;font-size:.84rem}
+  #sleepStatus{flex-basis:100%;font-size:.84rem;color:var(--muted)}
+
+  /* Compartir */
+  .share{background:linear-gradient(150deg,rgba(224,181,116,.16),rgba(74,46,33,.6));border:1px solid var(--line);border-radius:24px;padding:24px 20px}
+  .share h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;color:var(--gold-soft);margin-bottom:8px}
+  .share p{color:var(--cream);margin-bottom:16px}
+  .actions{display:flex;flex-wrap:wrap;gap:10px}
+  .share .small{margin-top:14px}
+
+  footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:38px;line-height:1.6}
+  footer strong{color:var(--gold-soft)}
+  @media (min-width:640px){.ritual{grid-template-columns:repeat(3,1fr)}.wrap{max-width:680px}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- LOGO: sube tu archivo como logo.png a la raíz del repositorio -->
+  <div class="topbar">
+    <div class="logo-box">
+      <img src="logo.png" alt="Naturaleza Abierta" id="logo">
+      <span class="logo-fallback" id="logoFallback" hidden>Naturaleza Abierta</span>
+    </div>
+    <div class="tiny">Tu espacio de bienestar</div>
+  </div>
+
+  <!-- PORTADA -->
+  <header class="hero">
+    <div class="eyebrow">Una pausa para ti</div>
+    <h1>Tu momento de calma comienza aquí</h1>
+    <p>Deja el apuro por un instante. Respira, ponte cómodo y disfruta esta experiencia a tu manera.</p>
+    <div class="pill">🍫 ChocoCalma · Ritual de bienestar</div>
+    <div><a class="btn btn-gold" href="#bienvenida">Comenzar mi momento <span aria-hidden="true">→</span></a></div>
+  </header>
+
+  <div class="notice">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#e0b574" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="2.5" y="14" width="4.5" height="7" rx="1.6"/><rect x="17" y="14" width="4.5" height="7" rx="1.6"/></svg>
+    <div><strong>Usa audífonos.</strong> Las ondas binaurales solo se sienten bien con audífonos puestos. Busca un lugar tranquilo y baja el volumen a un nivel cómodo.</div>
+  </div>
+
+  <!-- BIENVENIDA -->
+  <section class="block" id="bienvenida">
+    <div class="head"><h2>Qué bueno que estás aquí</h2><p>Un mensaje breve para comenzar.</p></div>
+    <div class="card">
+      <p>Hola, bienvenido a tu espacio ChocoCalma. <strong>Este momento es para ti.</strong> No tienes que resolverlo todo ahora. Busca una posición cómoda, deja a un lado las distracciones y toma una respiración suave, sin forzarla.</p>
+      <p>Disfruta tu chocolate según las indicaciones del envase y elige el sonido que vaya contigo. No hay una forma perfecta de hacerlo: regálate unos minutos para bajar el ritmo y reconectar contigo.</p>
+      <div class="player" id="welcomePlayer" data-src="audio/bienvenida.mp3" data-title="Bienvenida a ChocoCalma"></div>
+      <p class="soft">Pulsa reproducir para escuchar la bienvenida. Después podrás elegir una onda.</p>
+    </div>
+  </section>
+
+  <!-- RITUAL -->
+  <section class="block" id="ritual">
+    <div class="head"><h2>Tu ritual, a tu ritmo</h2><p>Ideas sencillas para distintos momentos del día.</p></div>
+    <div class="ritual">
+      <article><div class="when">Por la mañana</div><h3>Empieza sin apuro</h3><p>Date unos minutos antes de entrar en la rutina. Respira y elige un sonido tranquilo.</p></article>
+      <article><div class="when">Durante el día</div><h3>Haz una pausa</h3><p>Disfruta tu porción de ChocoCalma según la etiqueta y ponte los audífonos un rato.</p></article>
+      <article><div class="when">Por la noche</div><h3>Baja el ritmo</h3><p>Antes de acostarte, elige una onda suave y usa el temporizador para que se apague sola.</p></article>
+    </div>
+    <p class="small">Sigue las instrucciones de consumo del envase. Esta experiencia de audio acompaña un momento de relajación; no sustituye la atención médica ni garantiza el sueño.</p>
+  </section>
+
+  <!-- ONDAS -->
+  <section class="block" id="ondas-seccion">
+    <div class="head"><h2>¿Qué necesitas en este momento?</h2><p>Elige una onda binaural, ponte cómodo y escucha a tu ritmo.</p></div>
+
+    <div class="sleep" role="group" aria-label="Temporizador de apagado">
+      <span class="label">🌙 Apagar sola en:</span>
+      <button class="chip" data-min="0" aria-pressed="true">No</button>
+      <button class="chip" data-min="15" aria-pressed="false">15 min</button>
+      <button class="chip" data-min="30" aria-pressed="false">30 min</button>
+      <button class="chip" data-min="60" aria-pressed="false">60 min</button>
+      <span id="sleepStatus" aria-live="polite"></span>
+    </div>
+
+    <div id="ondas"><div class="empty">Cargando ondas…</div></div>
+  </section>
+
+  <!-- COMPARTIR -->
+  <section class="block" id="compartir">
+    <div class="share">
+      <h3>Cuéntanos cómo te fue</h3>
+      <p>¿Qué significó este momento para ti? Si te nace, comparte tu experiencia con Naturaleza Abierta: puede inspirar a alguien más.</p>
+      <div class="actions">
+        <a class="btn btn-gold" id="btnExperiencia" href="#" target="_blank" rel="noopener">Compartir mi experiencia ↗</a>
+        <a class="btn btn-outline" id="btnCatalogo" href="#" target="_blank" rel="noopener">Conocer más productos</a>
+      </div>
+      <p class="small">Si ya eres afiliado, comparte tu enlace personal del catálogo.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>ChocoCalma</strong> · Naturaleza Abierta</p>
+    <p>Respira. Disfruta. Regálate tiempo.</p>
+    <p style="margin-top:10px">Este contenido es un apoyo de relajación y bienestar. No sustituye atención médica ni psicológica. No lo uses mientras conduces o manejas maquinaria.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  /* ============ CONFIGURACIÓN (lo único que quizá quieras cambiar) ============ */
+  var WHATSAPP = '584221482602';   // WhatsApp que recibe las experiencias (formato internacional, sin + ni espacios)
+  var URL_EXPERIENCIAS = '';       // Cuando exista la página de experiencias, pon aquí su dirección y el botón irá allí
+  var URL_CATALOGO = 'https://catalogo.naturalezaabierta.com/';
+  /* ============================================================================ */
+
+  function $(s,r){ return (r||document).querySelector(s); }
+  function fmt(s){ if(!isFinite(s)) return '--:--'; var m=Math.floor(s/60), r=Math.floor(s%60); return m+':'+(r<10?'0':'')+r; }
+
+  /* Logo con respaldo */
+  var logo = $('#logo');
+  function logoFalla(){ logo.hidden = true; $('#logoFallback').hidden = false; }
+  logo.addEventListener('error', logoFalla);
+  if(logo.complete && logo.naturalWidth === 0) logoFalla();   // por si el error ocurrió antes de este script
+
+  /* Botones de la sección compartir */
+  var msg = 'Hola, quiero compartir mi experiencia con ChocoCalma: ';
+  $('#btnExperiencia').href = URL_EXPERIENCIAS || ('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg));
+  $('#btnCatalogo').href = URL_CATALOGO;
+
+  /* ---------- Reproductores ---------- */
+  var current = null;          // audio que está sonando
+  var currentCard = null;
+  var sleepTimer = null, sleepTick = null;
+
+  var PLAYER_HTML =
+    '<div class="controls">' +
+      '<button class="play" aria-label="Reproducir o pausar">' +
+        '<svg class="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
+        '<svg class="i-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>' +
+      '</button>' +
+      '<div class="track">' +
+        '<input class="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Posición del audio">' +
+        '<div class="times"><span class="cur">0:00</span><span class="dur">--:--</span></div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="unavailable" hidden></div>';
+
+  function setupPlayer(root, opts){
+    opts = opts || {};
+    root.innerHTML = PLAYER_HTML + (opts.loop ? '<div class="extras"><button class="chip loop" aria-pressed="false">Repetir en bucle</button></div>' : '');
+    var audio = new Audio();
+    audio.preload = opts.preload || 'none';
+    audio.src = root.dataset.src;
+    var title = root.dataset.title || 'ChocoCalma';
+
+    var btn = $('.play', root), seek = $('.seek', root), cur = $('.cur', root), dur = $('.dur', root), bad = $('.unavailable', root);
+    var card = root.closest('.card');
+    var dragging = false;
+
+    function paint(){
+      var p = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+      seek.style.setProperty('--p', p + '%');
+      if(!dragging) seek.value = p;
+      cur.textContent = fmt(audio.currentTime);
+    }
+    audio.addEventListener('loadedmetadata', function(){ dur.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', paint);
+    audio.addEventListener('play', function(){
+      root.classList.add('playing'); if(card) card.classList.add('playing');
+      try{ if('mediaSession' in navigator){ navigator.mediaSession.metadata = new MediaMetadata({title:title, artist:'ChocoCalma · Naturaleza Abierta'}); } }catch(e){}
+    });
+    audio.addEventListener('pause', function(){ root.classList.remove('playing'); if(card) card.classList.remove('playing'); });
+    audio.addEventListener('ended', function(){ root.classList.remove('playing'); if(card) card.classList.remove('playing'); paint(); });
+    audio.addEventListener('error', function(){
+      bad.textContent = opts.errorText || 'Este audio no está disponible por ahora.';
+      bad.hidden = false; btn.disabled = true; btn.style.opacity = .5; seek.disabled = true;
+    });
+
+    btn.addEventListener('click', function(){
+      if(audio.paused){
+        if(current && current !== audio) current.pause();
+        current = audio;
+        audio.volume = 1;
+        var pr = audio.play(); if(pr && pr.catch) pr.catch(function(){});
+      } else { audio.pause(); }
+    });
+    seek.addEventListener('input', function(){
+      dragging = true; seek.style.setProperty('--p', seek.value + '%');
+      if(audio.duration) cur.textContent = fmt(audio.duration * seek.value / 100);
+    });
+    seek.addEventListener('change', function(){
+      if(audio.duration) audio.currentTime = audio.duration * seek.value / 100;
+      dragging = false;
+    });
+
+    var loopBtn = $('.loop', root);
+    if(loopBtn){
+      loopBtn.addEventListener('click', function(){
+        audio.loop = !audio.loop;
+        loopBtn.setAttribute('aria-pressed', audio.loop ? 'true' : 'false');
+      });
+    }
+    return audio;
+  }
+
+  /* Bienvenida */
+  setupPlayer($('#welcomePlayer'), { preload:'metadata', errorText:'El audio de bienvenida estará disponible muy pronto.' });
+
+  /* ---------- Tarjeta de onda ---------- */
+  function cardOnda(o){
+    var el = document.createElement('article');
+    el.className = 'card';
+    el.innerHTML =
+      '<div class="onda-head">' +
+        '<div class="icon" aria-hidden="true"></div>' +
+        '<div class="meta"><div class="moment"></div><h3></h3><p class="desc"></p></div>' +
+      '</div>' +
+      '<div class="player"></div>';
+    $('.icon', el).textContent = o.icono || '🎧';
+    var mo = $('.moment', el); if(o.momento || o.duracion){ mo.textContent = [o.momento, o.duracion].filter(Boolean).join(' · '); } else { mo.remove(); }
+    $('h3', el).textContent = o.titulo || 'Onda';
+    var d = $('.desc', el); if(o.descripcion){ d.textContent = o.descripcion; } else { d.remove(); }
+    var p = $('.player', el);
+    p.dataset.src = o.archivo; p.dataset.title = o.titulo || 'Onda binaural';
+    setupPlayer(p, { loop:true, preload:'none' });
+    return el;
+  }
+
+  var cont = $('#ondas');
+  fetch('ondas.json?v=' + Date.now())
+    .then(function(r){ if(!r.ok) throw new Error('x'); return r.json(); })
+    .then(function(lista){
+      cont.innerHTML = '';
+      if(!lista.length){ cont.innerHTML = '<div class="empty">Pronto habrá nuevas ondas para ti.</div>'; return; }
+      lista.forEach(function(o){ cont.appendChild(cardOnda(o)); });
+    })
+    .catch(function(){ cont.innerHTML = '<div class="empty">No pudimos cargar las ondas. Intenta de nuevo en un momento.</div>'; });
+
+  /* ---------- Temporizador de apagado ---------- */
+  var chips = document.querySelectorAll('.sleep .chip');
+  var status = $('#sleepStatus');
+  function stopSleep(){ clearTimeout(sleepTimer); clearInterval(sleepTick); sleepTimer = sleepTick = null; status.textContent = ''; }
+  function fadeAndPause(){
+    var a = current; if(!a){ return; }
+    var v = a.volume, steps = 20, i = 0;
+    var f = setInterval(function(){
+      i++; try{ a.volume = Math.max(0, v * (1 - i/steps)); }catch(e){}
+      if(i >= steps){ clearInterval(f); a.pause(); try{ a.volume = 1; }catch(e){} }
+    }, 250);
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(x){ x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      stopSleep();
+      var min = parseInt(c.dataset.min, 10);
+      if(!min) return;
+      var end = Date.now() + min * 60000;
+      function show(){
+        var left = Math.max(0, Math.round((end - Date.now())/1000));
+        status.textContent = 'Se detendrá en ' + fmt(left) + (current ? '' : ' (empieza a contar ya; pon tu onda cuando quieras)');
+      }
+      show(); sleepTick = setInterval(show, 1000);
+      sleepTimer = setTimeout(function(){
+        stopSleep(); fadeAndPause();
+        chips.forEach(function(x){ x.setAttribute('aria-pressed', x.dataset.min === '0' ? 'true' : 'false'); });
+      }, min * 60000);
+    });
+  });
+})();
+</script>
+</body>
+</html>
