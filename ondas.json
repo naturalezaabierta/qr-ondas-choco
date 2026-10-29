@@ -5,7 +5,7 @@
     "duracion": "9:03 min",
     "icono": "🍃",
     "descripcion": "Para apartarte un momento del ruido y soltar la tensión despues de tomar tu cucharadita tu Choco Calma.",
-    "archivo": "audio/ondas/432 Hz Frecuencia Natural del Universo.mp3"
+    "archivo": "audio/ondas/432-hz-frecuencia-natural-del-universo.mp3"
   },
   {
     "titulo": "Descanso y sueño",
@@ -13,6 +13,42 @@
     "duracion": "10 min",
     "icono": "🌙",
     "descripcion": "Limpia canal energetico y silencia el ruido externo.",
-    "archivo": "audio/ondas/9999 Hz Limpia canales energeticos Silencia ruido externo Activa tu percepción.mp3"
+    "archivo": "audio/ondas/9999-hz-limpia-canales-energeticos-silencia-ruido-externo-activa-tu-percepcion.mp3"
+  }
+]
+{
+    "titulo": "Recalibración de la energia",
+    "momento": "Por la noche",
+    "duracion": "9:08 min",
+    "icono": "🌙",
+    "descripcion": "siente como tu energia se recalibra.",
+    "archivo": "audio/ondas/frecuencia-285Hz-activa-la-reparación-celular-y-libera-la-memoria-del-cuerpo-siente-como-tu-energia-se-recalibra.mp3"
+  }
+]
+{
+    "titulo": "Frecuencia de Armonización",
+    "momento": "Durante el día o Por la noche",
+    "duracion": "9:34 min",
+    "icono": "🌙",
+    "descripcion": "Frecuencia para armonizar el cuerpo.",
+    "archivo": "audio/ondas/frecuencia-de-armonizacion.mp3"
+  }
+]
+{
+    "titulo": "Frecuencia neurovibracional para liberar estress",
+    "momento": "Por la noche",
+    "duracion": "9:34 min",
+    "icono": "🌙",
+    "descripcion": "Labora en el equilibrio de la energía.",
+    "archivo": "audio/ondas/frecuencia-neurovibracional-para-liberar-estress.mp3"
+  }
+]
+{
+    "titulo": "Frecuencia para equilibrar la ansiedad y el estrés",
+    "momento": "Por la noche",
+    "duracion": "9:27 min",
+    "icono": "🌙",
+    "descripcion": "Estabiliza los procesos de ansiedad y estrés.",
+    "archivo": "audio/ondas/Frecuencia-para-calmar-ansiedad-y-recuperar-energia.mp3"
   }
 ]
