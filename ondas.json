@@ -2,17 +2,17 @@
   {
     "titulo": "Calma profunda",
     "momento": "Durante el día",
-    "duracion": "10 min",
+    "duracion": "9:03 min",
     "icono": "🍃",
-    "descripcion": "Para apartarte un momento del ruido y soltar la tensión mientras disfrutas tu chocolate.",
-    "archivo": "audio/ondas/onda-1.mp3"
+    "descripcion": "Para apartarte un momento del ruido y soltar la tensión despues de tomar tu cucharadita tu Choco Calma.",
+    "archivo": "audio/ondas/432 Hz Frecuencia Natural del Universo.mp3"
   },
   {
     "titulo": "Descanso y sueño",
     "momento": "Por la noche",
     "duracion": "10 min",
     "icono": "🌙",
-    "descripcion": "Un ambiente sonoro suave para escuchar mientras te acomodas antes de dormir.",
-    "archivo": "audio/ondas/onda-2.mp3"
+    "descripcion": "Limpia canal energetico y silencia el ruido externo.",
+    "archivo": "audio/ondas/9999 Hz Limpia canales energeticos Silencia ruido externo Activa tu percepción.mp3"
   }
 ]
